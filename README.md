@@ -54,6 +54,12 @@ Security hotspots detected by SonarCloud can be viewed directly on the [GitHub r
 
 ![Code scanning alert](./assets/code-scanning-alert.png)
 
+### Pull Request (GitHub)
+
+Pull request analysis results can be found directly on the pull requests.
+
+For an example, see [here](https://github.com/rufer7/github-sonarcloud-integration/pull/5)
+
 ## Useful Links
 
 - [SonarCloud - Getting Started with GitHub](https://docs.sonarsource.com/sonarcloud/getting-started/github/)
