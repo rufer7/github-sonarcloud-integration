@@ -19,6 +19,9 @@ Scan GitHub repository with SonarCloud
 ### Automatic Analysis
 
 > [!IMPORTANT]
+> With Automatic Analysis for .Net, certain rules for .Net source code are automatically deactivated. This includes security rules, all rules that come from outside the Sonar Way quality profile, as well as certain rules from within it.
+
+> [!NOTE]
 > Automatic analysis is only supported for GitHub repositories. If you are using a different version control system, you will need to use a different method to analyze your code.
 
 1. Follow the docs under [SonarCloud - Getting Started with GitHub](https://docs.sonarsource.com/sonarcloud/getting-started/github/) to setup `SonarCloud` with `GitHub`
@@ -32,8 +35,12 @@ Scan GitHub repository with SonarCloud
 
 ### CI-based analysis
 
+To set up CI-based analysis with GitHub actions proceed as follows
+
+1. Follow the instructions (guided wizard) under https://sonarcloud.io/project/configuration/GitHubActions?id=<sonarcloud-project-id>
+
 > [!NOTE]  
-> To set up CI-based analysis with GitHub actions, see [here](https://sonarcloud.io/project/analysis_method?id=rufer7_github-sonarcloud-integration) or go to your existing SonarCloud project that is set up with automatic analysis, go to `Administration` -> `Quality Profiles` and click on the `Learn more` link
+> Replace `<sonarcloud-project-id>` with the actual project id from SonarCloud
 
 ## Scan Results
 
