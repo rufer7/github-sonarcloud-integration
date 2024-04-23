@@ -35,12 +35,13 @@ Scan GitHub repository with SonarCloud
 
 ### CI-based analysis
 
-To set up CI-based analysis with GitHub actions proceed as follows
+> [!IMPORTANT]
+> Assumption: Automatic analysis is already set up for the repository
 
-1. Follow the instructions (guided wizard) under https://sonarcloud.io/project/configuration/GitHubActions?id=<sonarcloud-project-id>
+To set up CI-based analysis with GitHub actions follow the instructions (guided wizard) under https://sonarcloud.io/project/configuration/GitHubActions?id=SONAR_CLOUD_PROJECT_ID
 
 > [!NOTE]  
-> Replace `<sonarcloud-project-id>` with the actual project id from SonarCloud
+> Replace `SONAR_CLOUD_PROJECT_ID` with the id of the SonarCloud project
 
 ## Scan Results
 
@@ -51,6 +52,8 @@ The scan results can be viewed on the [`SonarCloud` dashboard](https://sonarclou
 ### GitHub
 
 Security hotspots detected by SonarCloud can be viewed directly on the [GitHub repository under `Security` tab in the `Code scanning` section](https://github.com/rufer7/github-sonarcloud-integration/security/code-scanning)
+
+**Example**
 
 ![Code scanning alert](./assets/code-scanning-alert.png)
 
