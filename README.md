@@ -16,9 +16,22 @@ Scan GitHub repository with SonarCloud
 
 ## Setup
 
-> under construction
+1. Follow the docs under [SonarCloud - Getting Started with GitHub](https://docs.sonarsource.com/sonarcloud/getting-started/github/) to setup `SonarCloud` with `GitHub`
+   1. Sign up at [SonarCloud](https://sonarcloud.io/)
+   1. Click `Import another organization`
+   1. Select your personal GitHub account or the organization that contains the repository you want to scan
+   1. When reaching the `Create your SonarCloud organization` page adjust/update data and click `Create organization`
+   1. On `Analyze projects` page select the repository you want to scan and click `Set Up`
+   1. On `Set up project for Clean as You Code` page select the desired code definition and click `Create project`
+1. After completing the setup, the repository will be scanned automatically and you will see the results on the `SonarCloud` dashboard
 
-## Links
+To set up analysis with GitHub actions, see [here](https://sonarcloud.io/project/analysis_method?id=rufer7_github-sonarcloud-integration)
+
+## Scan Results
+
+- The scan results can be viewed on the [`SonarCloud` dashboard](https://sonarcloud.io/summary/overall?id=rufer7_github-sonarcloud-integration)
+
+## Useful Links
 
 - [SonarCloud - Getting Started with GitHub](https://docs.sonarsource.com/sonarcloud/getting-started/github/)
 - [Pull request analysis](https://docs.sonarsource.com/sonarcloud/improving/pull-request-analysis/#existing-pull-requests-on-first-automatic-analysis)
