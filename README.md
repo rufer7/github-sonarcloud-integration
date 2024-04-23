@@ -16,6 +16,11 @@ Scan GitHub repository with SonarCloud
 
 ## Setup
 
+### Automatic Analysis
+
+> [!IMPORTANT]
+> Automatic analysis is only supported for GitHub repositories. If you are using a different version control system, you will need to use a different method to analyze your code.
+
 1. Follow the docs under [SonarCloud - Getting Started with GitHub](https://docs.sonarsource.com/sonarcloud/getting-started/github/) to setup `SonarCloud` with `GitHub`
    1. Sign up at [SonarCloud](https://sonarcloud.io/)
    1. Click `Import another organization`
@@ -25,11 +30,15 @@ Scan GitHub repository with SonarCloud
    1. On `Set up project for Clean as You Code` page select the desired code definition and click `Create project`
 1. After completing the setup, the repository will be scanned automatically and you will see the results on the `SonarCloud` dashboard
 
-To set up analysis with GitHub actions, see [here](https://sonarcloud.io/project/analysis_method?id=rufer7_github-sonarcloud-integration)
+### CI-based analysis
+
+> [!NOTE]  
+> To set up CI-based analysis with GitHub actions, see [here](https://sonarcloud.io/project/analysis_method?id=rufer7_github-sonarcloud-integration) or go to your existing SonarCloud project that is set up with automatic analysis, go to `Administration` -> `Quality Profiles` and click on the `Learn more` link
 
 ## Scan Results
 
 - The scan results can be viewed on the [`SonarCloud` dashboard](https://sonarcloud.io/summary/overall?id=rufer7_github-sonarcloud-integration)
+- Security hotspots detected by SonarCloud can be viewed on the [GitHub repository under `Security` tab in the `Code scanning` section](https://github.com/rufer7/github-sonarcloud-integration/security/code-scanning)
 
 ## Useful Links
 
