@@ -37,8 +37,15 @@ Scan GitHub repository with SonarCloud
 
 ## Scan Results
 
-- The scan results can be viewed on the [`SonarCloud` dashboard](https://sonarcloud.io/summary/overall?id=rufer7_github-sonarcloud-integration)
-- Security hotspots detected by SonarCloud can be viewed on the [GitHub repository under `Security` tab in the `Code scanning` section](https://github.com/rufer7/github-sonarcloud-integration/security/code-scanning)
+### SonarCloud
+
+The scan results can be viewed on the [`SonarCloud` dashboard](https://sonarcloud.io/summary/overall?id=rufer7_github-sonarcloud-integration)
+
+### GitHub
+
+Security hotspots detected by SonarCloud can be viewed directly on the [GitHub repository under `Security` tab in the `Code scanning` section](https://github.com/rufer7/github-sonarcloud-integration/security/code-scanning)
+
+![Code scanning alert](./assets/code-scanning-alert.png)
 
 ## Useful Links
 
