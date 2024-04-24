@@ -41,7 +41,7 @@ jobs:
       - name: Install dotnet-coverage
         shell: powershell
         run: |
-          dotnet tool install dotnet-coverage
+          dotnet tool install --global dotnet-coverage
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
