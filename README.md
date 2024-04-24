@@ -52,7 +52,7 @@ To include i.e. terraform files in the analysis of SonarScanner for .NET, the fo
 
    ```xml
    <ItemGroup>
-      <!-- This is needed to include terraform files in SonarCloud analysis -->
+      <!-- This is required to include terraform files in SonarCloud analysis -->
       <Content Include="..\..\deploy\**\*.tf">
          <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       </Content>
@@ -60,6 +60,36 @@ To include i.e. terraform files in the analysis of SonarScanner for .NET, the fo
    ```
 
    For more details see [here](https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/scanners/sonarscanner-for-dotnet/#advanced-topics)
+
+#### Include test coverage
+
+To include test coverage in the analysis of SonarScanner for .NET, the following adjustments are required in the GitHub actions workflow (`.github/workflows/quality.yml`).
+
+```yaml
+# Install dotnet-coverage
+- name: Install dotnet-coverage
+  shell: powershell
+  run: |
+    dotnet tool install --global dotnet-coverage
+- name: Build and analyze
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  shell: powershell
+  run: |
+    # Add /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+    .\.sonar\scanner\dotnet-sonarscanner begin /k:"rufer7_github-sonarcloud-integration" /o:"rufer7" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.projectBaseDir="D:\a\github-sonarcloud-integration\github-sonarcloud-integration" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+    dotnet build .\src\ArbitrarySolution.sln --configuration Release
+    # Execute tests and collect coverage
+    dotnet-coverage collect 'dotnet test .\src\ArbitraryProject.Tests\ArbitraryProject.Tests.csproj' -f xml  -o 'coverage.xml'
+    .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+```
+
+#### Include test coverage
+
+#### Include test coverage
+
+To include test coverage in the analysis of SonarScanner for .NET, the following adjustments are required in the
 
 ## Scan Results
 
@@ -85,3 +115,4 @@ For an example, see [here](https://github.com/rufer7/github-sonarcloud-integrati
 
 - [SonarCloud - Getting Started with GitHub](https://docs.sonarsource.com/sonarcloud/getting-started/github/)
 - [Pull request analysis](https://docs.sonarsource.com/sonarcloud/improving/pull-request-analysis/#existing-pull-requests-on-first-automatic-analysis)
+- [.NET test coverage](https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/test-coverage/dotnet-test-coverage/)
