@@ -43,6 +43,24 @@ To set up CI-based analysis with GitHub actions follow the instructions (guided 
 > [!NOTE]  
 > Replace `SONAR_CLOUD_PROJECT_ID` with the id of the SonarCloud project
 
+#### Include languages other than C#
+
+To include i.e. terraform files in the analysis of SonarScanner for .NET, the following adjustments are required.
+
+1. Extend the `dotnet-sonarscanner begin` command with project base dir argument `/d:sonar.projectBaseDir="D:\a\GITHUB_PROJECT_NAME\GITHUB_PROJECT_NAME"` where `GITHUB_PROJECT_NAME` is the name of the GitHub project
+1. Include the corresponding source files/folders in one of the projects `csproj` file
+
+   ```xml
+   <ItemGroup>
+      <!-- This is needed to include terraform files in SonarCloud analysis -->
+      <Content Include="..\..\deploy\**\*.tf">
+         <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      </Content>
+   </ItemGroup>
+   ```
+
+   For more details see [here](https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/scanners/sonarscanner-for-dotnet/#advanced-topics)
+
 ## Scan Results
 
 ### SonarCloud
