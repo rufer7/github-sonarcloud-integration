@@ -12,9 +12,9 @@
 
   <ItemGroup>
     <!-- This is needed to include terraform files in SonarCloud analysis -->
-    <Content Include="..\..\deploy\**\*.tf">
+    <!-- <Content Include="..\..\deploy\**\*.tf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
+    </Content> -->
   </ItemGroup>
 
 </Project>
