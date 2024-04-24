@@ -12,7 +12,7 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=rufer7_github-sonarcloud-integration&metric=sqale_rating)](https://sonarcloud.io/summary/overall?id=rufer7_github-sonarcloud-integration)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=rufer7_github-sonarcloud-integration&metric=vulnerabilities)](https://sonarcloud.io/summary/overall?id=rufer7_github-sonarcloud-integration)
 
-Scan GitHub repository with SonarCloud
+Scan and analyze GitHub repository with SonarCloud
 
 ## Setup
 
