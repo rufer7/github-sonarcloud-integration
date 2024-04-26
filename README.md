@@ -87,8 +87,6 @@ To include test coverage in the analysis of SonarScanner for .NET, the following
 
 #### Include test coverage
 
-#### Include test coverage
-
 To include test coverage in the analysis of SonarScanner for .NET, the following adjustments are required in the
 
 ## Scan Results
