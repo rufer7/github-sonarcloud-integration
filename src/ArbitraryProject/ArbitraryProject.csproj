@@ -13,7 +13,7 @@
   <ItemGroup>
     <!-- This is required to include terraform files in SonarCloud analysis -->
     <!-- See https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/scanners/sonarscanner-for-dotnet/#advanced-topics -->
-    <Content Include="..\..\deploy\**\*.tf">
+    <Content Include="..\..\deploy\**\*.tf" Visible="false">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
