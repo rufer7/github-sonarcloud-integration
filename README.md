@@ -53,7 +53,7 @@ To include i.e. terraform files in the analysis of SonarScanner for .NET, the fo
    ```xml
    <ItemGroup>
       <!-- This is required to include terraform files in SonarCloud analysis -->
-      <Content Include="..\..\deploy\**\*.tf">
+      <Content Include="..\..\deploy\**\*.tf" Visible="false">
          <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       </Content>
    </ItemGroup>
