@@ -85,10 +85,6 @@ To include test coverage in the analysis of SonarScanner for .NET, the following
     .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 ```
 
-#### Include test coverage
-
-To include test coverage in the analysis of SonarScanner for .NET, the following adjustments are required in the
-
 ## Scan Results
 
 ### SonarCloud
