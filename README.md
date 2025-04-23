@@ -12,7 +12,10 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=rufer7_github-sonarcloud-integration&metric=sqale_rating)](https://sonarcloud.io/summary/overall?id=rufer7_github-sonarcloud-integration)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=rufer7_github-sonarcloud-integration&metric=vulnerabilities)](https://sonarcloud.io/summary/overall?id=rufer7_github-sonarcloud-integration)
 
-Scan and analyze GitHub repository with SonarCloud
+Scan and analyze GitHub repository with SonarQube Cloud
+
+> [!NOTE]
+> `SonarCloud` got renamed to `SonarQube Cloud`
 
 ## Setup
 
@@ -24,14 +27,14 @@ Scan and analyze GitHub repository with SonarCloud
 > [!NOTE]
 > Automatic analysis is only supported for GitHub repositories. If you are using a different version control system, you will need to use a different method to analyze your code.
 
-1. Follow the docs under [SonarCloud - Getting Started with GitHub](https://docs.sonarsource.com/sonarcloud/getting-started/github/) to setup `SonarCloud` with `GitHub`
-   1. Sign up at [SonarCloud](https://sonarcloud.io/)
+1. Follow the docs under [SonarQube Cloud - Getting Started with GitHub](https://docs.sonarsource.com/sonarqube-cloud/getting-started/github/) to setup `SonarQube Cloud` with `GitHub`
+   1. Sign up at [SonarQube Cloud](https://www.sonarsource.com/products/sonarcloud/)
    1. Click `Import another organization`
    1. Select your personal GitHub account or the organization that contains the repository you want to scan
-   1. When reaching the `Create your SonarCloud organization` page adjust/update data and click `Create organization`
+   1. When reaching the `Create your SonarQube Cloud organization` page adjust/update data and click `Create organization`
    1. On `Analyze projects` page select the repository you want to scan and click `Set Up`
    1. On `Set up project for Clean as You Code` page select the desired code definition and click `Create project`
-1. After completing the setup, the repository will be scanned automatically and you will see the results on the `SonarCloud` dashboard
+1. After completing the setup, the repository will be scanned automatically and you will see the results on the `SonarQube Cloud` dashboard
 
 ### CI-based analysis
 
@@ -41,7 +44,7 @@ Scan and analyze GitHub repository with SonarCloud
 To set up CI-based analysis with GitHub actions follow the instructions (guided wizard) under https://sonarcloud.io/project/configuration/GitHubActions?id=SONAR_CLOUD_PROJECT_ID
 
 > [!NOTE]  
-> Replace `SONAR_CLOUD_PROJECT_ID` with the id of the SonarCloud project
+> Replace `SONAR_CLOUD_PROJECT_ID` with the id of the SonarQube Cloud project
 
 #### Include languages other than C#
 
@@ -52,7 +55,7 @@ To include i.e. terraform files in the analysis of SonarScanner for .NET, the fo
 
    ```xml
    <ItemGroup>
-      <!-- This is required to include terraform files in SonarCloud analysis -->
+      <!-- This is required to include terraform files in SonarQube Cloud analysis -->
       <Content Include="..\..\deploy\**\*.tf" Visible="false">
          <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       </Content>
@@ -87,13 +90,17 @@ To include test coverage in the analysis of SonarScanner for .NET, the following
 
 ## Scan Results
 
-### SonarCloud
+### SonarQube Cloud
 
-The scan results can be viewed on the [`SonarCloud` dashboard](https://sonarcloud.io/summary/overall?id=rufer7_github-sonarcloud-integration)
+The scan results can be viewed on the [`SonarQube Cloud` dashboard](https://sonarcloud.io/summary/overall?id=rufer7_github-sonarcloud-integration)
 
 ### GitHub
 
-Security hotspots detected by SonarCloud can be viewed directly on the [GitHub repository under `Security` tab in the `Code scanning` section](https://github.com/rufer7/github-sonarcloud-integration/security/code-scanning)
+> [!IMPORTANT]
+> The new SonarQube Cloud plans `Free` and `Team` do not support `GitHub Advanced Security integration` anymore - only `Enterprise` plan does
+> For more details, see [here](https://www.sonarsource.com/plans-and-pricing/sonarcloud/)
+
+Security hotspots detected by SonarQube Cloud can be viewed directly on the [GitHub repository under `Security` tab in the `Code scanning` section](https://github.com/rufer7/github-sonarcloud-integration/security/code-scanning)
 
 **Example**
 
@@ -107,6 +114,6 @@ For an example, see [here](https://github.com/rufer7/github-sonarcloud-integrati
 
 ## Useful Links
 
-- [SonarCloud - Getting Started with GitHub](https://docs.sonarsource.com/sonarcloud/getting-started/github/)
-- [Pull request analysis](https://docs.sonarsource.com/sonarcloud/improving/pull-request-analysis/#existing-pull-requests-on-first-automatic-analysis)
+- [SonarQube Cloud - Getting Started with GitHub](https://docs.sonarsource.com/sonarqube-cloud/getting-started/github/)
+- [Pull request analysis](https://docs.sonarsource.com/sonarqube-cloud/improving/pull-request-analysis/#existing-pull-requests-on-first-automatic-analysis)
 - [.NET test coverage](https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/test-coverage/dotnet-test-coverage/)
