@@ -98,6 +98,7 @@ The scan results can be viewed on the [`SonarQube Cloud` dashboard](https://sona
 
 > [!IMPORTANT]
 > The new SonarQube Cloud plans `Free` and `Team` do not support `GitHub Advanced Security integration` anymore - only `Enterprise` plan does
+>
 > For more details, see [here](https://www.sonarsource.com/plans-and-pricing/sonarcloud/)
 
 Security hotspots detected by SonarQube Cloud can be viewed directly on the [GitHub repository under `Security` tab in the `Code scanning` section](https://github.com/rufer7/github-sonarcloud-integration/security/code-scanning)
