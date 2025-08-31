@@ -45,10 +45,9 @@ To set up CI-based analysis with GitHub actions ...
 
 - ... either follow the instructions (guided wizard) under https://sonarcloud.io/project/analysis_method?id=SONAR_CLOUD_PROJECT_ID
 - ... or use the official [sonarqube-scan-action](https://github.com/SonarSource/sonarqube-scan-action)
-   For an example, see [here](https://github.com/rufer7/aspnetcore-scan-testing/blob/main/.github/workflows/sonarqube-cloud.yml)
 
-> [!NOTE]  
-> Replace `SONAR_CLOUD_PROJECT_ID` with the id of the SonarQube Cloud project
+> [!TIP]
+> For an example usage of `sonarqube-scan-action`, see [here](https://github.com/rufer7/aspnetcore-scan-testing/blob/main/.github/workflows/sonarqube-cloud.yml)
 
 #### Include languages other than C#
 
