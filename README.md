@@ -74,15 +74,17 @@ To include test coverage in the analysis of SonarScanner for .NET, the following
 ```yaml
 # Install dotnet-coverage
 - name: Install dotnet-coverage
-  shell: powershell
+  shell: pwsh
   run: |
     dotnet tool install --global dotnet-coverage
 - name: Build and analyze
   env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  shell: powershell
+  shell: pwsh
   run: |
+    $ErrorActionPreference = "Stop"
+    $PSNativeCommandUseErrorActionPreference = $true
     # Add /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
     .\.sonar\scanner\dotnet-sonarscanner begin /k:"rufer7_github-sonarcloud-integration" /o:"rufer7" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.projectBaseDir="D:\a\github-sonarcloud-integration\github-sonarcloud-integration" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
     dotnet build .\src\ArbitrarySolution.sln --configuration Release
@@ -121,3 +123,4 @@ For an example, see [here](https://github.com/rufer7/github-sonarcloud-integrati
 - [SonarQube Cloud - Getting Started with GitHub](https://docs.sonarsource.com/sonarqube-cloud/getting-started/github/)
 - [Pull request analysis](https://docs.sonarsource.com/sonarqube-cloud/improving/pull-request-analysis/#existing-pull-requests-on-first-automatic-analysis)
 - [.NET test coverage](https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/test-coverage/dotnet-test-coverage/)
+- [Github action should fail on authentication error](https://community.sonarsource.com/t/github-action-should-fail-on-authn-error/147720)
