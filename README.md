@@ -67,9 +67,9 @@ To include i.e. terraform files in the analysis of SonarScanner for .NET, the fo
 
    For more details see [here](https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/scanners/sonarscanner-for-dotnet/#advanced-topics)
 
-#### Include test coverage
+#### Include .NET test coverage
 
-To include test coverage in the analysis of SonarScanner for .NET, the following adjustments are required in the GitHub actions workflow (see `.github\workflows\quality.yml`).
+To include .NET test coverage in the analysis of SonarScanner for .NET, the following adjustments are required in the GitHub actions workflow (see `.github\workflows\quality.yml`).
 
 ```yaml
 # Install dotnet-coverage
