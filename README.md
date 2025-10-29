@@ -125,3 +125,4 @@ For an example, see [here](https://github.com/rufer7/github-sonarcloud-integrati
 - [.NET test coverage](https://docs.sonarsource.com/sonarqube-server/analyzing-source-code/test-coverage/dotnet-test-coverage)
 - [Github action should fail on authentication error](https://community.sonarsource.com/t/github-action-should-fail-on-authentication-error/147720)
 - [Analysis of product projects vs. test projects](https://github.com/SonarSource/sonar-scanner-msbuild/wiki/Analysis-of-product-projects-vs.-test-projects)
+- [Parameters not settable in the UI](https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/analysis-parameters/parameters-not-settable-in-ui)
