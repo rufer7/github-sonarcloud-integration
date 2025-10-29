@@ -22,7 +22,7 @@ Scan and analyze GitHub repository with SonarQube Cloud
 ### Automatic Analysis
 
 > [!IMPORTANT]
-> With Automatic Analysis for .Net, certain rules for .Net source code are automatically deactivated. This includes security rules, all rules that come from outside the Sonar Way quality profile, as well as certain rules from within it.
+> With Automatic Analysis for .NET, certain rules for .NET source code are automatically deactivated. This includes security rules, all rules that come from outside the Sonar Way quality profile, as well as certain rules from within it.
 
 > [!NOTE]
 > Automatic analysis is only supported for GitHub repositories. If you are using a different version control system, you will need to use a different method to analyze your code.
@@ -67,9 +67,9 @@ To include i.e. terraform files in the analysis of SonarScanner for .NET, the fo
 
    For more details see [here](https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/scanners/sonarscanner-for-dotnet/#advanced-topics)
 
-#### Include test coverage
+#### Include .NET test coverage
 
-To include test coverage in the analysis of SonarScanner for .NET, the following adjustments are required in the GitHub actions workflow (`.github/workflows/quality.yml`).
+To include .NET test coverage in the analysis of SonarScanner for .NET, the following adjustments are required in the GitHub actions workflow (see `.github\workflows\quality.yml`).
 
 ```yaml
 # Install dotnet-coverage
@@ -79,19 +79,24 @@ To include test coverage in the analysis of SonarScanner for .NET, the following
     dotnet tool install --global dotnet-coverage
 - name: Build and analyze
   env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   shell: pwsh
   run: |
     $ErrorActionPreference = "Stop"
     $PSNativeCommandUseErrorActionPreference = $true
-    # Add /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-    .\.sonar\scanner\dotnet-sonarscanner begin /k:"rufer7_github-sonarcloud-integration" /o:"rufer7" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.projectBaseDir="D:\a\github-sonarcloud-integration\github-sonarcloud-integration" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+  # Add /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+    ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"rufer7_github-sonarcloud-integration" /o:"rufer7" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.projectBaseDir="D:\a\github-sonarcloud-integration\github-sonarcloud-integration" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.terraform.provider.azure.version=3.100.0 /d:sonar.sca.resolveAsRoot=true
     dotnet build .\src\ArbitrarySolution.sln --configuration Release
-    # Execute tests and collect coverage
-    dotnet-coverage collect 'dotnet test .\src\ArbitraryProject.Tests\ArbitraryProject.Tests.csproj' -f xml  -o 'coverage.xml'
-    .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+  # Execute tests and collect coverage
+    dotnet-coverage collect 'dotnet test .\src\ArbitraryProject.Tests\ArbitraryProject.Tests.csproj' -f xml -o 'coverage.xml'
+    ${{ runner.temp }}\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 ```
+
+#### Software Composition Analysis (SCA)
+
+> [!IMPORTANT]
+> Currently, it's required to set `sonar.sca.resolveAsRoot=true` in the `dotnet-sonarscanner` begin step to avoid `No lockfile was found for 'PATH_TO_PROJECT_FILE' (nuget)` warning on `Dependency Risks` and `Inventory` > `Dependencies` tabs
 
 ## Scan Results
 
@@ -122,5 +127,7 @@ For an example, see [here](https://github.com/rufer7/github-sonarcloud-integrati
 
 - [SonarQube Cloud - Getting Started with GitHub](https://docs.sonarsource.com/sonarqube-cloud/getting-started/github/)
 - [Pull request analysis](https://docs.sonarsource.com/sonarqube-cloud/improving/pull-request-analysis/#existing-pull-requests-on-first-automatic-analysis)
-- [.NET test coverage](https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/test-coverage/dotnet-test-coverage/)
-- [Github action should fail on authentication error](https://community.sonarsource.com/t/github-action-should-fail-on-authn-error/147720)
+- [.NET test coverage](https://docs.sonarsource.com/sonarqube-server/analyzing-source-code/test-coverage/dotnet-test-coverage)
+- [Github action should fail on authentication error](https://community.sonarsource.com/t/github-action-should-fail-on-authentication-error/147720)
+- [Analysis of product projects vs. test projects](https://github.com/SonarSource/sonar-scanner-msbuild/wiki/Analysis-of-product-projects-vs.-test-projects)
+- [Parameters not settable in the UI](https://docs.sonarsource.com/sonarqube-cloud/advanced-setup/analysis-parameters/parameters-not-settable-in-ui)
