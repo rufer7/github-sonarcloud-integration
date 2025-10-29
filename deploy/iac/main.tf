@@ -16,7 +16,7 @@ resource "azurerm_storage_account" "sa" {
   account_replication_type        = "GRS"
   shared_access_key_enabled       = false
   default_to_oauth_authentication = true
-  min_tls_version                 = "TLS1_0" # Security issue to be detected by SonarCloud
+  min_tls_version                 = "TLS1_0" # Security issue to be detected by SonarQube Cloud
 }
 
 resource "azurerm_role_assignment" "blob-data-owner" {
