@@ -396,7 +396,3 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-
-# Sonar
-# Avoid error message "There were errors in the dependency analysis" on the "Dependencies" tab in SoanrQube Cloud
-!*/project.assets.json
