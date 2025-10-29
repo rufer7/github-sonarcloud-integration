@@ -93,6 +93,11 @@ To include .NET test coverage in the analysis of SonarScanner for .NET, the foll
     ${{ runner.temp }}\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 ```
 
+#### Software Composition Analysis (SCA)
+
+> [!IMPORTANT]
+> Currently, it's required to set `sonar.sca.resolveAsRoot=true` in the `dotnet-sonarscanner` begin step to avoid `No lockfile was found for 'PATH_TO_PROJECT_FILE' (nuget)` warning on `Dependency Risks` and `Inventory` > `Dependencies` tabs
+
 ## Scan Results
 
 ### SonarQube Cloud
