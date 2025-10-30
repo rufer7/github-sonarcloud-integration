@@ -86,17 +86,12 @@ To include .NET test coverage in the analysis of SonarScanner for .NET, the foll
     $ErrorActionPreference = "Stop"
     $PSNativeCommandUseErrorActionPreference = $true
   # Add /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-    ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"rufer7_github-sonarcloud-integration" /o:"rufer7" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.projectBaseDir="D:\a\github-sonarcloud-integration\github-sonarcloud-integration" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.terraform.provider.azure.version=3.100.0 /d:sonar.sca.resolveAsRoot=true
+    ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"rufer7_github-sonarcloud-integration" /o:"rufer7" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.projectBaseDir="D:\a\github-sonarcloud-integration\github-sonarcloud-integration" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.terraform.provider.azure.version=3.100.0
     dotnet build .\src\ArbitrarySolution.sln --configuration Release
   # Execute tests and collect coverage
     dotnet-coverage collect 'dotnet test .\src\ArbitraryProject.Tests\ArbitraryProject.Tests.csproj' -f xml -o 'coverage.xml'
     ${{ runner.temp }}\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 ```
-
-#### Software Composition Analysis (SCA)
-
-> [!IMPORTANT]
-> Currently, it's required to set `sonar.sca.resolveAsRoot=true` in the `dotnet-sonarscanner` begin step to avoid `No lockfile was found for 'PATH_TO_PROJECT_FILE' (nuget)` warning on `Dependency Risks` and `Inventory` > `Dependencies` tabs
 
 ## Scan Results
 
