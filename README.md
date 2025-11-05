@@ -86,11 +86,11 @@ To include .NET test coverage in the analysis of SonarScanner for .NET, the foll
     $ErrorActionPreference = "Stop"
     $PSNativeCommandUseErrorActionPreference = $true
   # Add /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
-    ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"rufer7_github-sonarcloud-integration" /o:"rufer7" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.projectBaseDir="D:\a\github-sonarcloud-integration\github-sonarcloud-integration" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.terraform.provider.azure.version=3.100.0
+    ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"rufer7_github-sonarcloud-integration" /o:"rufer7" /d:sonar.token="$env:SONAR_TOKEN" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.projectBaseDir="D:\a\github-sonarcloud-integration\github-sonarcloud-integration" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml /d:sonar.terraform.provider.azure.version=3.100.0
     dotnet build .\src\ArbitrarySolution.sln --configuration Release
   # Execute tests and collect coverage
     dotnet-coverage collect 'dotnet test .\src\ArbitraryProject.Tests\ArbitraryProject.Tests.csproj' -f xml -o 'coverage.xml'
-    ${{ runner.temp }}\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+    ${{ runner.temp }}\scanner\dotnet-sonarscanner end /d:sonar.token="$env:SONAR_TOKEN"
 ```
 
 ## Scan Results
