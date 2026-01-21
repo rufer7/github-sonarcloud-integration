@@ -10,5 +10,10 @@ namespace ArbitraryProject
         {
             return Regex.IsMatch(input, "\\d");
         }
+
+        public bool IsLetter(string input)
+        {
+            return Regex.IsMatch(input, "[a-zA-Z]");
+        }
     }
 }
